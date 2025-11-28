@@ -60,7 +60,7 @@ pip install -r requirements.txt
 ## 🕹️ Inference
 ### Testing on your images
 1. Place your images in a directory, for example, under `./assets/in-the-wild_example` (where we have prepared several examples). 
-2. Run the inference command: `bash infer.sh`. 
+2. Run the inference command: `sh infer.sh`. 
 
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
