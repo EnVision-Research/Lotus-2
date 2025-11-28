@@ -14,7 +14,7 @@
 <span class="author-block"><sup>2</sup>UC San Diego</span>
 <span class="author-block"><sup>3</sup>HKUST</span><br>
 <span class="author-block">
-    <sup>&#10033;</sup>**Both authors contributed equally.**
+    <sup>&#10033;</sup>Both authors contributed equally.
     <sup>&#9993;</sup>Corresponding author.
 </span>
 
@@ -22,7 +22,8 @@
 
 **We present Lotus-2, a two-stage deterministic framework for monocular geometric dense prediction.** Our method leverages pre-trained generative model as a deterministic world prior to achieve **new state-of-the-art accuracy** while requiring **remarkably minimal data** (trained on only **0.66%** of the samples used by MoGe-2). This figure demonstrates Lotus-2's robust zero-shot generalization with sharp geometric details, especially in challenging cases like oil paintings and transparent objects.
 
-Our previous work, Lotus-1, can be found [here](https://lotus3d.github.io/). 
+🚀🚀🚀 **Please also check the** [**Project Page**](https://lotus3d.github.io/) **and** [**Github Repo**](https://lotus3d.github.io/) **our prior work: Lotus!** 🚀🚀🚀
+
 ## 📢 News
 - 2025-11-29: The inference code and HuggingFace demo ([Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)) are available! <br>
 - 2025-11-29: [Paper](https://arxiv.org/abs/2409.18124) released. <br>
@@ -45,7 +46,7 @@ pip install -r requirements.txt
 
 ## 🤗 Gradio Demo
 
-1. Online demo: [Depth](https://huggingface.co/spaces/haodongli/Lotus_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus_Normal)
+1. Online demo: [Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)
 2. Local demo
 - For **depth** estimation, run:
     ```
@@ -64,5 +65,5 @@ pip install -r requirements.txt
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
-Comming soon...
+Comming soon!
 ```
