@@ -58,9 +58,8 @@ pip install -r requirements.txt
 
 ## 🕹️ Inference
 ### Testing on your images
-1. Download the model weights from [here](https://huggingface.co/jingheya/Lotus-2/tree/main) and place them in the folder `./weights/`
-2. Place your images in a directory, for example, under `./assets/in-the-wild_example` (where we have prepared several examples). 
-3. Run the inference command: `bash infer.sh`. 
+1. Place your images in a directory, for example, under `./assets/in-the-wild_example` (where we have prepared several examples). 
+2. Run the inference command: `bash infer.sh`. 
 
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:

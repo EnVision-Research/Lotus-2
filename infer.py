@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 # coding=utf-8
+"""
+Lotus-2 Inference Script
+
+Usage:
+    python infer.py --pretrained_model_name_or_path <model_path> [other_args]
+
+If --core_predictor_model_path, --lcm_model_path, or --detail_sharpener_model_path
+are not provided, the script will automatically download the corresponding model
+weights from the default HuggingFace repositories.
+"""
 
 import argparse
 import logging
@@ -9,6 +19,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+import torch.utils.checkpoint
 from peft import LoraConfig, set_peft_model_state_dict
 from PIL import Image
 from torch import nn
@@ -23,9 +34,86 @@ from utils.image_utils import colorize_depth_map
 from pipeline import Lotus2Pipeline
 from utils.seed_all import seed_all
 
+try:
+    from huggingface_hub import snapshot_download
+    HF_AVAILABLE = True
+except ImportError:
+    HF_AVAILABLE = False
+    logging.warning("huggingface_hub not available. Model auto-download will not work.")
+
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 # check_min_version("0.33.0.dev0")
 
+# Default HuggingFace repositories and model filenames
+DEFAULT_REPO_NAME = "jingheya/Lotus-2"
+
+CORE_PREDICTOR_FILENAME = {
+    "depth": "lotus-2_core_predictor_depth.safetensors",
+    "normal": "lotus-2_core_predictor_normal.safetensors"
+}
+
+LCM_FILENAME = {
+    "depth": "lotus-2_lcm_depth.safetensors",
+    "normal": "lotus-2_lcm_normal.safetensors"
+}
+
+DETAIL_SHARPENER_FILENAME = {
+    "depth": "lotus-2_detail_sharpener_depth.safetensors",
+    "normal": "lotus-2_detail_sharpener_normal.safetensors"
+}
+
+def get_model_path(model_path, repo_id, filename):
+    """
+    Get the local path for a model. If model_path is None, download from HuggingFace.
+
+    Args:
+        model_path: Local path to model or None to download from HF
+        repo_id: HuggingFace repository ID
+        filename: Model filename in the repository
+
+    Returns:
+        Local path to the model file
+    """
+    if model_path is not None:
+        return model_path
+
+    if not HF_AVAILABLE:
+        raise ImportError(
+            f"huggingface_hub is required for auto-downloading {filename} model weights. "
+            "Please install it with: pip install huggingface_hub"
+        )
+
+    logging.info(f"Downloading {filename} model weights from {repo_id}/{filename}")
+
+    try:
+        # Create cache directory if it doesn't exist
+        cache_dir = os.path.expanduser("~/.cache/huggingface/hub")
+        os.makedirs(cache_dir, exist_ok=True)
+
+        # Download the entire repository and get the specific file
+        repo_path = snapshot_download(
+            repo_id=repo_id,
+            cache_dir=cache_dir,
+            local_files_only=False,
+        )
+
+        # Construct the full path to the specific file
+        full_path = os.path.join(repo_path, filename)
+
+        if not os.path.exists(full_path):
+            # Try to find the file in the repo
+            for root, dirs, files in os.walk(repo_path):
+                if filename in files:
+                    full_path = os.path.join(root, filename)
+                    break
+            else:
+                raise FileNotFoundError(f"Could not find {filename} in the downloaded repository")
+
+        logging.info(f"Successfully downloaded {filename} model to: {full_path}")
+        return full_path
+
+    except Exception as e:
+        raise RuntimeError(f"Failed to download {filename} model from {repo_id}: {str(e)}")
 
 class Local_Continuity_Module(nn.Module):
     def __init__(self, num_channels):
@@ -99,7 +187,7 @@ def parse_args(input_args=None):
         default="flux-dreambooth-lora",
         help="The output directory where the model predictions will be written.",
     )
-    parser.add_argument("--seed", type=int, default=None, help="Random seed.")
+    parser.add_argument("--seed", type=int, default=0, help="Random seed.")
     parser.add_argument(
         "--task_name",
         type=str,
@@ -180,6 +268,25 @@ def load_lora_and_lcm_weights(transformer, core_predictor_model_path, lcm_model_
         "ff_context.net.2",
     ]
 
+    # Auto-download models if paths are None
+    core_predictor_model_path = get_model_path(
+        core_predictor_model_path,
+        DEFAULT_REPO_NAME,
+        CORE_PREDICTOR_FILENAME[task_name]
+    )
+
+    lcm_model_path = get_model_path(
+        lcm_model_path,
+        DEFAULT_REPO_NAME,
+        LCM_FILENAME[task_name]
+    )
+
+    detail_sharpener_model_path = get_model_path(
+        detail_sharpener_model_path,
+        DEFAULT_REPO_NAME,
+        DETAIL_SHARPENER_FILENAME[task_name]
+    )
+
     # load lora weights for core predictor
     core_transformer_lora_config = LoraConfig(
         r=lora_rank,
@@ -258,6 +365,18 @@ def main(args):
         level=logging.INFO,
     )
     logging.info("Run Lotus-2! ")
+
+    # -------------------- Preparation --------------------
+    # Check if model paths are provided, if not, they will be auto-downloaded from HuggingFace
+    if args.core_predictor_model_path is None or args.lcm_model_path is None or args.detail_sharpener_model_path is None:
+        if HF_AVAILABLE:
+            logging.info("Some model paths are not provided. Model weights will be automatically downloaded from HuggingFace.")
+            logging.info(f"Default repo: {DEFAULT_REPO_NAME}")
+        else:
+            logging.warning("Some model paths are not provided and huggingface_hub is not available.")
+            logging.warning("Please install huggingface_hub: pip install huggingface_hub")
+            logging.warning("Or provide local paths for all model weights.")
+            exit(1)
 
     # Random seed
     if args.seed is not None:
