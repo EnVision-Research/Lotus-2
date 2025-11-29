@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 4. Be sure you have access to [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev).
 
-5. Login your huggingface account via:
+5. Login your huggingface account via (if you want to switch account, run `hf auth logout` at first):
 ```
 hf auth login
 ```
