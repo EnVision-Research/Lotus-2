@@ -55,7 +55,7 @@ hf auth login
 ## 🤗 Gradio Demo
 
 1. Online demo: [Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)
-2. Local demo
+2. Local demo:
 - For **depth** estimation, run:
     ```
     python app.py depth
@@ -66,9 +66,11 @@ hf auth login
     ```
 
 ## 🕹️ Inference
-### Testing on your images
-1. Place your images in a directory, for example, under `./assets/in-the-wild_example` (where we have prepared several examples). 
-2. Run the inference command: `sh infer.sh`. 
+1. Place your images in a directory, for example, under `./assets/in-the-wild_example` (where we have already prepared several examples). 
+2. Run the inference command:
+   ```
+   sh infer.sh
+   ```
 
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
