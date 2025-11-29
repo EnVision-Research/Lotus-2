@@ -30,23 +30,24 @@
 
 ## 🛠️ Setup
 This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDIA A800-SXM4-80GB.  
+1. Be sure you have a GPU with at least 48GB memory.
 
-1. Clone the repository (requires git):
+2. Clone the repository (requires git):
 ```
 git clone https://github.com/EnVision-Research/Lotus-2.git
 cd Lotus-2
 ```
 
-2. Install dependencies (requires conda):
+3. Install dependencies (requires conda):
 ```
 conda create -n lotus2 python=3.10 -y
 conda activate lotus2
 pip install -r requirements.txt 
 ```
 
-3. Be sure you have access to [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev).
+4. Be sure you have access to [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev).
 
-4. Login your huggingface account via:
+5. Login your huggingface account via:
 ```
 hf auth login
 ```
