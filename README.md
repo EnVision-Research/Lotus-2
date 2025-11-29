@@ -72,6 +72,21 @@ hf auth login
    sh infer.sh
    ```
 
+## 🚀 Evaluation
+1. Prepare benchmark datasets:
+- For **depth** estimation, please download the [Marigold evaluation datasets](https://share.phys.ethz.ch/~pf/bingkedata/marigold/evaluation_dataset/) via:
+    ```
+    cd datasets/eval/depth/
+    
+    wget -r -np -nH --cut-dirs=4 -R "index.html*" -P . https://share.phys.ethz.ch/~pf/bingkedata/marigold/evaluation_dataset/
+    ```
+- For **normal** estimation, please (manually) download the  [DSINE evaluation datasets](https://drive.google.com/drive/folders/1t3LMJIIrSnCGwOEf53Cyg0lkSXd3M4Hm?usp=drive_link) (`dsine_eval.zip`)  under: `datasets/eval/normal/` and unzip it. 
+
+2. Run the evaluation command (modify `TASK_NAME` in `eval.sh` to switch tasks):
+```
+sh eval.sh
+```
+
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
