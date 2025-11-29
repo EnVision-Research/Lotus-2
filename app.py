@@ -1,7 +1,6 @@
 import spaces  # must be first!
 import sys
 import os
-os.environ['GRADIO_TEMP_DI']="."
 import torch
 from PIL import Image
 import gradio as gr
@@ -17,6 +16,7 @@ from infer import (
     process_single_image
 )
 
+os.environ['GRADIO_TEMP_DI']="."
 pipeline = None
 device = "cuda" if torch.cuda.is_available() else "cpu"
 weight_dtype = torch.bfloat16
