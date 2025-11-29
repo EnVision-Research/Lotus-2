@@ -77,7 +77,7 @@ This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDI
     wget -r -np -nH --cut-dirs=4 -R "index.html*" -P . https://share.phys.ethz.ch/~pf/bingkedata/marigold/evaluation_dataset/
     ```
 - For **normal** estimation, please (manually) download the  [DSINE evaluation datasets](https://drive.google.com/drive/folders/1t3LMJIIrSnCGwOEf53Cyg0lkSXd3M4Hm?usp=drive_link) (`dsine_eval.zip`)  under: `datasets/eval/normal/` and unzip it. 
-2. Run the evaluation command (modify `TASK_NAME` in `eval.sh` to switch tasks):
+2. Run the evaluation command (modify the `TASK_NAME` in `eval.sh` to switch tasks):
    ```
    sh eval.sh
    ```
