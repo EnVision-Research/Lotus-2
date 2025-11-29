@@ -25,8 +25,8 @@
 🚀🚀🚀 **Please also check the** [**Project Page**](https://lotus3d.github.io/) **and** [**Github Repo**](https://github.com/EnVision-Research/Lotus) **our prior work: Lotus!** 🚀🚀🚀
 
 ## 📢 News
-- 2025-11-29: The inference code and HuggingFace demo ([Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)) are available! <br>
-- 2025-11-29: [Paper](https://arxiv.org/abs/2409.18124) released. <br>
+- 2025-11-XX: [Paper]() released. <br>
+- 2025-11-28: The inference code and HuggingFace demo ([Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)) are available! <br>
 
 ## 🛠️ Setup
 This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDIA A800-SXM4-80GB.  
