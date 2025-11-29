@@ -44,6 +44,13 @@ conda activate lotus2
 pip install -r requirements.txt 
 ```
 
+3. Be sure you have access to [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev).
+
+4. Login your huggingface account via:
+```
+hf auth login
+```
+
 ## 🤗 Gradio Demo
 
 1. Online demo: [Depth](https://huggingface.co/spaces/haodongli/Lotus-2_Depth) & [Normal](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)
