@@ -43,6 +43,7 @@ def load_pipeline():
     )
     pipeline.local_continuity_module = local_continuity_module
     pipeline = pipeline.to(device)
+    pipeline.set_progress_bar_config(disable=True)
 
 def eval():
     global pipeline, device, weight_dtype, task
@@ -50,23 +51,28 @@ def eval():
     output_dir = os.environ.get("OUTPUT_DIR", "outputs/eval")
 
     def gen_fn(rgb_in):
-        rgb_input = rgb_in / 255.0 * 2.0 - 1.0  #  [0, 255] -> [-1, 1]
+        if task == "depth":
+            rgb_input = rgb_in / 255.0 * 2.0 - 1.0  #  [0, 255] -> [-1, 1]
+            output_type = "np"
+        elif task == "normal":
+            rgb_input = rgb_in
+            output_type = "pt"
+        else:
+            raise ValueError(f"Invalid task name: {task}")
 
         prediction = pipeline(
             rgb_in=rgb_input, 
             prompt='', 
             num_inference_steps=10,
-            output_type='np',
+            output_type=output_type,
             process_res=None
             ).images[0]
 
         if task == "depth":
-            output_npy = prediction.mean(axis=-1)
+            output = prediction.mean(axis=-1)
         elif task == "normal":
-            output_npy = prediction
-        else:
-            raise ValueError(f"Invalid task name: {task}")
-        return output_npy
+            output = (prediction*2-1.0).unsqueeze(0) # [0,1] -> [-1,1], (1, 3, h, w)
+        return output
 
     with torch.no_grad():
         if task == 'depth':

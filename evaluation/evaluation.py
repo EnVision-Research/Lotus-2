@@ -311,8 +311,6 @@ def evaluation_normal(eval_dir, base_data_dir, dataset_split_path, eval_mode="ge
                     # resample_method=resample_method,
                     )
                 norm_out = gen_prediction(img) # [h, w, 3]
-                norm_out = norm_out * 2.0 - 1.0 # [0,1] -> [-1,1] 
-                norm_out = torch.tensor(norm_out).permute(2,0,1).unsqueeze(0).to(device) # torch.tensor([1, 3, h, w])
                 
                 # resize to original res
                 if processing_res is not None:
