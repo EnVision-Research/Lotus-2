@@ -1,6 +1,7 @@
 import spaces  # must be first!
 import sys
 import os
+os.environ['GRADIO_TEMP_DI']="."
 import torch
 from PIL import Image
 import gradio as gr
