@@ -71,7 +71,7 @@ def eval():
         if task == "depth":
             output = prediction.mean(axis=-1)
         elif task == "normal":
-            output = (prediction*2-1.0).unsqueeze(0) # [0,1] -> [-1,1], (1, 3, h, w)
+            output = (prediction * 2.0 - 1.0).unsqueeze(0) # [0,1] -> [-1,1], (1, 3, h, w)
         return output
 
     with torch.no_grad():
