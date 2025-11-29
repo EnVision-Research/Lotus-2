@@ -4,3 +4,4 @@ outputs/
 *.tar
 dsine_eval/
 vibe_edit_history/
+.gradio/
