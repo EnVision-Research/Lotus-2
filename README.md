@@ -31,26 +31,22 @@
 ## 🛠️ Setup
 This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDIA A800-SXM4-80GB.  
 1. Be sure you have a GPU with at least **48GB** memory.
-
 2. Clone the repository (requires git):
-```
-git clone https://github.com/EnVision-Research/Lotus-2.git
-cd Lotus-2
-```
-
+   ```
+   git clone https://github.com/EnVision-Research/Lotus-2.git
+   cd Lotus-2
+   ```
 3. Install dependencies (requires conda):
-```
-conda create -n lotus2 python=3.10 -y
-conda activate lotus2
-pip install -r requirements.txt 
-```
-
+   ```
+   conda create -n lotus2 python=3.10 -y
+   conda activate lotus2
+   pip install -r requirements.txt 
+   ```
 4. Be sure you have access to [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev).
-
 5. Login your huggingface account via (if you want to switch account, run `hf auth logout` at first):
-```
-hf auth login
-```
+   ```
+   hf auth login
+   ```
 
 ## 🤗 Gradio Demo
 
@@ -81,11 +77,10 @@ hf auth login
     wget -r -np -nH --cut-dirs=4 -R "index.html*" -P . https://share.phys.ethz.ch/~pf/bingkedata/marigold/evaluation_dataset/
     ```
 - For **normal** estimation, please (manually) download the  [DSINE evaluation datasets](https://drive.google.com/drive/folders/1t3LMJIIrSnCGwOEf53Cyg0lkSXd3M4Hm?usp=drive_link) (`dsine_eval.zip`)  under: `datasets/eval/normal/` and unzip it. 
-
 2. Run the evaluation command (modify `TASK_NAME` in `eval.sh` to switch tasks):
-```
-sh eval.sh
-```
+   ```
+   sh eval.sh
+   ```
 
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
