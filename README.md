@@ -1,7 +1,7 @@
 # <img src="assets/badges/lotus_icon.png" alt="lotus" style="height:1em; vertical-align:bottom;"/> Lotus-2: Advancing Geometric Dense Prediction with Powerful Image Generative Model
 
 [![Page](https://img.shields.io/badge/Project-Website-pink?logo=googlechrome&logoColor=white)](https://lotus-2.github.io/)
-[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2409.18124)
+[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2512.01030)
 [![HuggingFace Demo](https://img.shields.io/badge/🤗%20HuggingFace-Demo%20(Depth)-yellow)](https://huggingface.co/spaces/haodongli/Lotus-2_Depth)
 [![HuggingFace Demo](https://img.shields.io/badge/🤗%20HuggingFace-Demo%20(Normal)-yellow)](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)
 
@@ -85,5 +85,10 @@ This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDI
 ## 🎓 Citation
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
-Comming soon!
+@article{he2025lotus,
+    title={Lotus-2: Advancing Geometric Dense Prediction with Powerful Image Generative Model},
+    author={He, Jing and Li, Haodong and Sheng, Mingzhi and Chen, Ying-Cong},
+    journal={arXiv preprint arXiv:2512.01030},
+    year={2025}
+}
 ```
