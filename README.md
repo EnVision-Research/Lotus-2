@@ -92,9 +92,9 @@ This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDI
 If you find our work useful in your research, please consider citing our paper:
 ```bibtex
 @article{he2025lotus,
-    title={Lotus-2: Advancing Geometric Dense Prediction with Powerful Image Generative Model},
-    author={He, Jing and Li, Haodong and Sheng, Mingzhi and Chen, Ying-Cong},
-    journal={arXiv preprint arXiv:2512.01030},
-    year={2025}
+  title={Lotus-2: Advancing Geometric Dense Prediction with Powerful Image Generative Model},
+  author={He, Jing and Li, Haodong and Sheng, Mingzhi and Chen, Ying-Cong},
+  journal={arXiv preprint arXiv:2512.01030},
+  year={2025}
 }
 ```
