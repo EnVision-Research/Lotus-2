@@ -4,6 +4,7 @@
 [![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2512.01030)
 [![HuggingFace Demo](https://img.shields.io/badge/🤗%20HuggingFace-Demo%20(Depth)-yellow)](https://huggingface.co/spaces/haodongli/Lotus-2_Depth)
 [![HuggingFace Demo](https://img.shields.io/badge/🤗%20HuggingFace-Demo%20(Normal)-yellow)](https://huggingface.co/spaces/haodongli/Lotus-2_Normal)
+[![HuggingFace](https://img.shields.io/badge/🤗%20HuggingFace-Weights-blue)](https://huggingface.co/jingheya/Lotus-2/tree/main)
 
 [Jing He](https://scholar.google.com/citations?hl=en&user=RsLS11MAAAAJ)<sup>1</sup>,
 [Haodong Li](https://haodong-li.com/)<sup>12<span>&#10033;</span></sup>,
@@ -67,6 +68,11 @@ This installation was tested on: Ubuntu 20.04 LTS, Python 3.10, CUDA 12.3, NVIDI
    ```
    sh infer.sh
    ```
+- <b> Note</b>: The inference code will automatically download the required model weights. You also can download them manually using the HuggingFace CLI:
+   ```
+   hf download jingheya/Lotus-2 --local-dir <path/to/your/local/directory>
+   ```
+   Use the following arguments to specify the paths: `--core_predictor_model_path`, `--lcm_model_path`, and `--detail_sharpener_model_path`.
 
 ## 🚀 Evaluation
 1. Prepare benchmark datasets:
