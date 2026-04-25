@@ -23,7 +23,7 @@
 
 **We present Lotus-2, a two-stage deterministic framework for monocular geometric dense prediction.** Our method leverages pre-trained generative model as a deterministic world prior to achieve **new state-of-the-art accuracy** while requiring **remarkably minimal data** (trained on only **0.66%** of the samples used by MoGe-2). This figure demonstrates Lotus-2's robust zero-shot generalization with sharp geometric details, especially in challenging cases like oil paintings and transparent objects.
 
-🚀🚀🚀 **Please also check the** [**Project Page**](https://lotus3d.github.io/) **and** [**Github Repo**](https://github.com/EnVision-Research/Lotus) **our prior work: Lotus!** 🚀🚀🚀
+🚀🚀🚀 **Please also check the** [**Project Page**](https://lotus3d.github.io/) **and** [**Github Repo**](https://github.com/EnVision-Research/Lotus) **of our prior work: Lotus!** 🚀🚀🚀
 
 ## 📢 News
 - 2025-12-01: [Paper](https://arxiv.org/abs/2512.01030) released! <br>
